@@ -62,9 +62,9 @@ with torch.no_grad():
         score_map = output.data.cpu()
         preds = decode_preds(score_map , [56, 56])
         visualize_and_save_landmarks(
-            image_path=os.path.join(args.data_root,image_name),
-            preds=preds*4,
-            save_path=os.path.join("./experiments/res",image_name))
+            image_path=os.path.join(args.data_root,(image_name[0])),
+            preds=preds,
+            save_path=os.path.join(args.save_dir,(image_name[0])))
 
 
 

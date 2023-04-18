@@ -16,7 +16,6 @@ class CUSTOM(data.Dataset):
         self.scale_factor = 0.25
 
         self.index_list=[f for f in sorted(os.listdir(data_root))]
-
         self.mean = np.array([0.485, 0.456, 0.406], dtype=np.float32)
         self.std = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
