@@ -48,13 +48,13 @@ def decode_preds(output, res):
             py = int(math.floor(coords[n][p][1]))
             if (px > 1) and (px < res[0]) and (py > 1) and (py < res[1]):
                 diff = torch.Tensor([hm[py - 1][px] - hm[py - 1][px - 2], hm[py][px - 1]-hm[py - 2][px - 1]])
-                coords[n][p] += diff.sign() 
+                coords[n][p] += diff.sign() *.25
     preds = coords.clone()
 
     # Transform back
     if preds.dim() < 3:
         preds = preds.view(1, preds.size())
 
-    return preds
+    return preds*4 # heatmap is 1/4 to original image
 
 
